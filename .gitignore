@@ -1,0 +1,13 @@
+.build/
+.swiftpm/
+dist/
+.DS_Store
+*.dSYM/
+*.dfu
+*.xuv
+*.wav
+*.mp3
+*.ips
+*.log
+.env
+.env.*

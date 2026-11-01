@@ -1,0 +1,14 @@
+Bose USB Bridge contains project source and helper programs written for this
+repository. It does not include Bose firmware images or runtime copies of the
+analysis tools listed below.
+
+Analysis-tool attribution:
+
+- REA (Reverse Engineering Anything): https://github.com/morluto/rea
+- Rizin: https://github.com/rizinorg/rizin
+
+These tools were used during development analysis only. They are not linked,
+bundled, or required at runtime.
+
+Bose and SoundLink are trademarks of Bose Corporation. This independent
+project is not affiliated with or endorsed by Bose Corporation.

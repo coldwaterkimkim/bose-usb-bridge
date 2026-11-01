@@ -1,0 +1,33 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test local policy, diagnostics, and control socket
+        run: swift test
+      - name: Test the size-optimized build and notification object lifetimes
+        run: swift test -c release -Xswiftc -Osize
+      - name: Check shell scripts
+        run: |
+          for file in script/*.sh script/bose-usb; do
+            bash -n "$file"
+          done
+      - name: Build signed local archive without installation or device access
+        run: ./script/build_and_run.sh --build-only

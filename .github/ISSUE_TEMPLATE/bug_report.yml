@@ -1,0 +1,77 @@
+name: Bug report
+description: Report a reproducible Bose USB Bridge issue
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not include serial numbers, usernames, recordings, firmware files, or an unredacted diagnostics file. The tested model generation may be unknown; that is useful information too.
+  - type: input
+    id: bridge_version
+    attributes:
+      label: Bridge version
+      description: For example, 0.2.1 candidate.
+      placeholder: 0.2.1
+    validations:
+      required: true
+  - type: input
+    id: speaker_model
+    attributes:
+      label: Exact speaker model label and generation, if known
+      description: Do not guess a generation. Write “unknown” if the label does not identify it.
+      placeholder: SoundLink Flex; generation unknown
+    validations:
+      required: true
+  - type: input
+    id: firmware_metadata
+    attributes:
+      label: Firmware/model metadata, if available
+      description: The helper may report model and version metadata. Never include a serial number.
+      placeholder: minnow / Main 1.0.20.
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac architecture
+      placeholder: macOS 14.x, Apple Silicon
+    validations:
+      required: true
+  - type: dropdown
+    id: bluetooth
+    attributes:
+      label: Was Bluetooth enabled during the test?
+      options:
+        - Yes
+        - No
+        - Not checked
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened?
+      description: Say whether audio was actually audible, not only whether the device appeared in macOS settings.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Connect the speaker by USB.
+        2. Run the documented command.
+        3. Describe the result.
+    validations:
+      required: true
+  - type: textarea
+    id: redacted_status
+    attributes:
+      label: Redacted status or error text (optional)
+      description: Share only the relevant fields. Remove output-device names, UIDs, usernames, and other private details.
